@@ -18,7 +18,7 @@ public class HuffmanBinaryTree {
 	public static final int CHAR_MAX = 256;  // max char value to be encoded
 	
 	// post: constructs the initial Huffman structure with the given frequency counts of ASCII
-	//		 characters. An extra node is added to account for our special pseudo-eof character
+	//	 characters. An extra node is added to account for our special pseudo-eof character
 	public HuffmanBinaryTree(int[] count) {
 		Queue<HuffmanNode> nodeQueue = new PriorityQueue<HuffmanNode>();
 
@@ -42,7 +42,7 @@ public class HuffmanBinaryTree {
 	// post: constructs a Huffman structure from the given code file. Uses each binary value in 
 	//       the Huffman code to reconstruct a pathway from the top of the tree to each character 
 	//       node. A binary value of 0 means we shall progress left down the tree, and a value of
-	// 		 1 means we progress downward to the right. A dummy(empty) root will be instantiated. 
+	// 	 1 means we progress downward to the right. A dummy(empty) root will be instantiated. 
 	public HuffmanBinaryTree(Scanner input) {
 		overallRoot = new HuffmanNode(-1);
 		
@@ -72,15 +72,15 @@ public class HuffmanBinaryTree {
 	}
 	
 	// post: writes the tree to the given output file in standard format which consists of line 
-	//		 pairs that describe the ASCII value code for each character in the structure. Codes
-	//		 will appear in traversal order.
+	//	 pairs that describe the ASCII value code for each character in the structure. Codes
+	//	 will appear in traversal order.
 	public void write(PrintStream output) {
 		writeHelper(output, overallRoot, "");
 	}
 	
 	// post: writes the tree to the given output file in standard format which consists of line 
-	//		 pairs that describe the ASCII value code for each character in the structure. Codes
-	//		 will appear in traversal order.
+	//	 pairs that describe the ASCII value code for each character in the structure. Codes
+	//	 will appear in traversal order.
 	private void writeHelper(PrintStream output, HuffmanNode root, String path) {
 		if (root != null) {
 			if (root.isLeaf()) {
@@ -95,7 +95,7 @@ public class HuffmanBinaryTree {
 	
 	// pre : input stream contains a legal encoding of characters for this tree's Huffman code
 	// post: reads individual bits from the input stream and writes corresponding characters to the given output file. This method stops reading
-	//		 if it encounters our pseudo-eof character. 
+	//	 if it encounters our pseudo-eof character. 
 	public void decode(BitInputStream input, PrintStream output, int eof) {	
 		HuffmanNode curr = overallRoot;
 		boolean eofFound = false;
