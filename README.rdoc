@@ -1,0 +1,43 @@
+== HuffmanBinaryTree
+
+This program compresses files by reducing the necessary number of bits per character by using
+a Huffman coding scheme that is generated from a Huffman Tree structure. Using a priority queue
+our program constructs a tree that always has nodes with the lowest frequencies farthest down 
+the tree, and nodes with high frequencies up near the root of the tree. Left subtree paths have 
+a "0" value, and right subtrees have a "1" value. The unique structure that is created is 
+exactly what is needed to make path codes, which exhibit the prefix property. Our program is 
+able to output our tree, in standard order, to a given code file. It is also able to take 
+encoded files and decode them back into their original 8-bit character format using the code 
+file.
+
+
+== Public Methods
+	
+post: constructs the initial Huffman structure with the given frequency counts of ASCII characters. An extra node is added to account for our special pseudo-eof character
+       LetterCounter(String data)
+	
+pre : char is a letter (throws IllegalArgumentException if not)
+post: returns the count for the given letter
+       int get(char letter)
+
+pre : char is a letter && value >= 0 (throws IllegalArgumentException if not)
+post: sets the count for given letter to given value
+       public HuffmanBinaryTree(int[] count)
+
+post: returns the current sum of letter counts in the LetterInventory instance
+       int size()
+	
+post: returns true if array is empty, false otherwise
+       boolean isEmpty()
+
+post: returns a sorted lowercase String of the inventory surrounded with square brackets
+       String toString()
+
+pre : other argument must be a LetterCounter reference
+post: returns a new LetterCounter object that represents the sum of this LetterCounter and the other given LetterCounter.
+       LetterInventory add(LetterInventory other)
+
+pre : other argument must be a LetterCounter reference
+post: returns a new LetterInventory object that represents the difference between the other LetterCounter from this LetterCounter.
+       LetterInventory subtract(LetterInventory other)
+
