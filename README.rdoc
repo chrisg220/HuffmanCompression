@@ -13,31 +13,20 @@ file.
 
 == Public Methods
 	
-post: constructs the initial Huffman structure with the given frequency counts of ASCII characters. An extra node is added to account for our special pseudo-eof character
-       LetterCounter(String data)
-	
-pre : char is a letter (throws IllegalArgumentException if not)
-post: returns the count for the given letter
-       int get(char letter)
-
-pre : char is a letter && value >= 0 (throws IllegalArgumentException if not)
-post: sets the count for given letter to given value
+post: constructs the initial Huffman structure with the given frequency counts of ASCII  characters. An extra node is added to account for our special pseudo-eof character
        public HuffmanBinaryTree(int[] count)
+	
+pre : Scanner contains a tree stored in standard format
+post: constructs a Huffman structure from the given code file. Uses each binary value in the Huffman code to reconstruct a pathway from the top of the tree to each character node. A binary value of 0 means we shall progress left down the tree, and a value of 1 means we progress downward to the right. A dummy(empty) root will be instantiated.
+       public HuffmanBinaryTree(Scanner input)
+
+post: writes the tree to the given output file in standard format which consists of line pairs that describe the ASCII value code for each character in the structure. Codes will appear in traversal order.
+       public void write(PrintStream output)
 
 post: returns the current sum of letter counts in the LetterInventory instance
-       int size()
+       public void write(PrintStream output)
 	
-post: returns true if array is empty, false otherwise
-       boolean isEmpty()
-
-post: returns a sorted lowercase String of the inventory surrounded with square brackets
-       String toString()
-
-pre : other argument must be a LetterCounter reference
-post: returns a new LetterCounter object that represents the sum of this LetterCounter and the other given LetterCounter.
-       LetterInventory add(LetterInventory other)
-
-pre : other argument must be a LetterCounter reference
-post: returns a new LetterInventory object that represents the difference between the other LetterCounter from this LetterCounter.
-       LetterInventory subtract(LetterInventory other)
+pre : input stream contains a legal encoding of characters for this tree's Huffman code
+post: reads individual bits from the input stream and writes corresponding characters to the given output file. This method stops reading if it encounters our pseudo-eof character.
+       public void decode(BitInputStream input, PrintStream output, int eof)
 
